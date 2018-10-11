@@ -10,6 +10,9 @@ var accounts = JSON.parse(fs.readFileSync('accounts.json'));
 
 // generate your keys with
 // openssl genpkey -algorithm RSA -out ssh_host_rsa_key -pkeyopt rsa_keygen_bits:2048
+// chmod 600 ssh_host_rsa_key
+// ssh-keygen -f ssh_host_rsa_key -o -p -a 100
+// ssh-keygen -f ssh_host_rsa_key -p -a 100
 var srv = new SFTPServer({
     privateKeyFile: "/home/viveksam/.ssh/ssh_host_rsa_key"
 });
