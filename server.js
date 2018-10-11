@@ -13,6 +13,7 @@ var accounts = JSON.parse(fs.readFileSync('accounts.json'));
 // chmod 600 ssh_host_rsa_key
 // ssh-keygen -f ssh_host_rsa_key -o -p -a 100
 // ssh-keygen -f ssh_host_rsa_key -p -a 100
+// ssh-keygen -y -f ssh_host_rsa_key > ssh_host_rsa_key.pub
 var srv = new SFTPServer({
     privateKeyFile: "/home/viveksam/.ssh/ssh_host_rsa_key"
 });
@@ -26,7 +27,7 @@ srv.on("connect", function (auth, info) {
 
     if (auth.method !== 'password' || auth.password !== accounts[auth.username].password) {
         console.log("login attempt from " + auth.username);
-        return auth.reject();
+        //return auth.reject();
     }
 
     console.log("login success from " + auth.username);
