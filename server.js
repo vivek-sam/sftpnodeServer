@@ -37,13 +37,12 @@ srv.on("connect", function (auth, info) {
         console.warn("Okay, we've accepted...");
         session.on("readdir", function (path, responder) {
 
-            console.warn("Readdir request for path: " + path);
             var dirs, i, j, results;
             console.warn("Readdir request for path: " + path);
 
             dirs = (function () {
                 results = [];
-                for (j = 1; j < 10000; j++) { results.push(j); }
+                for (j = 1; j < 10; j++) { results.push(j); }
                 return results;
             }).apply(this);
             i = 0;
